@@ -11,19 +11,23 @@ import android.view.View;
 
 import com.hencoder.hencoderpracticedraw4.R;
 
-public class Practice01ClipRectView extends View {
+public class Practice01ClipRectView extends View
+{
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Bitmap bitmap;
 
-    public Practice01ClipRectView(Context context) {
+    public Practice01ClipRectView(Context context)
+    {
         super(context);
     }
 
-    public Practice01ClipRectView(Context context, @Nullable AttributeSet attrs) {
+    public Practice01ClipRectView(Context context, @Nullable AttributeSet attrs)
+    {
         super(context, attrs);
     }
 
-    public Practice01ClipRectView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public Practice01ClipRectView(Context context, @Nullable AttributeSet attrs, int defStyleAttr)
+    {
         super(context, attrs, defStyleAttr);
     }
 
@@ -32,12 +36,21 @@ public class Practice01ClipRectView extends View {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(Canvas canvas)
+    {
         super.onDraw(canvas);
 
         int left = (getWidth() - bitmap.getWidth()) / 2;
         int top = (getHeight() - bitmap.getHeight()) / 2;
+        int right = getWidth() + bitmap.getWidth() / 2;
+        int bottom = getHeight() + bitmap.getHeight() / 2;
+
+
+        canvas.save();
+        canvas.clipRect(left + 40, top + 40, right - 40, bottom - 40);
 
         canvas.drawBitmap(bitmap, left, top, paint);
+
+        canvas.restore();
     }
 }

@@ -78,6 +78,7 @@ public class Practice13CameraRotateHittingFaceView extends View {
 
         camera.save();
         matrix.reset();
+        camera.setLocation(0,0,-20);//将相机在Z轴上后移，使投影变小
         camera.rotateX(degree);
         camera.getMatrix(matrix);
         camera.restore();
